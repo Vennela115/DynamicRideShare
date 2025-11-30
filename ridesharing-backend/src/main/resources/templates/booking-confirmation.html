@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${subject}">Booking Confirmation</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f7; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .header-image { width: 100%; height: auto; display: block; }
+        .content { padding: 30px; }
+        .content h2 { color: #15803d; font-size: 22px; margin-top: 0; }
+        .content p { color: #475569; line-height: 1.6; }
+        .details-box { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-top: 20px; }
+        .details-table { width: 100%; border-collapse: collapse; }
+        .details-table td { padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #334155; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .details-table td.label { font-weight: 600; width: 120px; color: #64748b; }
+        .footer { background-color: #f1f5f9; padding: 20px; text-align: center; font-size: 12px; color: #64748b; }
+        .button { display: inline-block; background-color: #16a34a; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Image -->
+        <img src="cid:confirmationImage" alt="Booking Success" class="header-image" />
+
+        <div class="content">
+            <h2 th:text="${subject}">Booking Confirmed!</h2>
+            <p>Hello <strong th:text="${recipientName}">User</strong>,</p>
+            <p th:text="${message}">Here are the details of your booking:</p>
+
+            <div class="details-box">
+                <table class="details-table">
+                    <tr>
+                        <td class="label">Ride:</td>
+                        <td th:text="${rideInfo}">Source → Destination</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Date & Time:</td>
+                        <td th:text="${rideDate} + ' at ' + ${rideTime}">YYYY-MM-DD at HH:MM</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Passenger:</td>
+                        <td th:text="${passengerName}">Passenger Name</td>
+                    </tr>
+                     <tr>
+                        <td class="label">Driver:</td>
+                        <td th:text="${driverName}">Driver Name</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Seats Booked:</td>
+                        <td th:text="${seatsBooked}">0</td>
+                    </tr>
+                </table>
+            </div>
+
+            <a href="#" th:href="${dashboardUrl}" class="button">View My Bookings</a>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Dynamic Ride Sharing. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

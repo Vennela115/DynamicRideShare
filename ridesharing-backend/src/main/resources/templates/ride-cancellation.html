@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Cancellation Notification</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f7; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .header-image { width: 100%; height: auto; display: block; }
+        .content { padding: 30px; }
+        .content h2 { color: #b91c1c; font-size: 22px; margin-top: 0; }
+        .content p { color: #475569; line-height: 1.6; }
+        .details-box { background-color: #fffbeb; border-left: 4px solid #f59e0b; padding: 20px; margin: 20px 0; }
+        .details-box h3 { color: #b45309; margin-top: 0; }
+        .details-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .details-table td { padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #334155; }
+        .details-table tr:last-child td { border-bottom: none; }
+        .details-table td.label { font-weight: 600; width: 120px; color: #64748b;}
+        .footer { background-color: #f1f5f9; padding: 20px; text-align: center; font-size: 12px; color: #64748b; }
+        .button { display: inline-block; background-color: #16a34a; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Image -->
+        <img src="cid:cancellationImage" alt="Ride Cancelled" class="header-image" />
+
+        <div class="content">
+            <h2>Ride Cancellation Notice</h2>
+            <p>Hello <strong th:text="${recipientName}">User</strong>,</p>
+            <p>We're writing to inform you that one of your upcoming rides has been cancelled by the driver. We understand this is inconvenient and apologize for any disruption to your plans.</p>
+
+            <div class="details-box">
+                <h3>Important Update</h3>
+                <p>Any payments made for this booking will be processed for a full refund according to our policies.</p>
+            </div>
+
+            <h3>Cancelled Ride Details:</h3>
+            <table class="details-table">
+                <tr>
+                    <td class="label">Route:</td>
+                    <td th:text="${rideRoute}">Source → Destination</td>
+                </tr>
+                <tr>
+                    <td class="label">Date:</td>
+                    <td th:text="${rideDate}">YYYY-MM-DD</td>
+                </tr>
+                <tr>
+                    <td class="label">Driver:</td>
+                    <td th:text="${driverName}">Driver Name</td>
+                </tr>
+            </table>
+
+            <p style="margin-top: 25px;">You can search for other available rides on our platform.</p>
+            <a href="#" th:href="${dashboardUrl}" class="button">Find Another Ride</a>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Dynamic Ride Sharing. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

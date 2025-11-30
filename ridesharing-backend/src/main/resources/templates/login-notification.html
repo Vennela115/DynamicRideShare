@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Login to Your Account</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f7; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .header-image { width: 100%; height: auto; display: block; }
+        .content { padding: 30px; }
+        .content h2 { color: #1e293b; font-size: 22px; margin-top: 0; }
+        .content p { color: #475569; line-height: 1.6; }
+        .actions { margin-top: 25px; text-align: center; }
+        .button { display: inline-block; background-color: #16a34a; color: #ffffff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 5px; }
+        .button-secondary { background-color: #16a34a; }
+        .security-note { margin-top: 30px; font-size: 12px; text-align: center; color: #64748b; }
+        .footer { background-color: #f1f5f9; padding: 20px; text-align: center; font-size: 12px; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="cid:loginImage" alt="Security Alert" class="header-image" />
+
+        <div class="content">
+            <h2>New Login to Your Account</h2>
+            <p>Hello <strong th:text="${name}">User</strong>,</p>
+            <p>We're writing to let you know that there was a new sign-in to your Dynamic Ride Sharing account. If this was you, you can safely ignore this email.</p>
+            
+            <!-- This section is dynamic based on the user's role -->
+            <div class="actions">
+                <!-- Buttons for PASSENGERS -->
+                <div th:if="${isPassenger}">
+                    <a th:href="${searchUrl}" class="button">Search for Rides</a>
+                    <a th:href="${bookingsUrl}" class="button button-secondary">My Bookings</a>
+                </div>
+
+                <!-- Buttons for DRIVERS -->
+                <div th:if="${isDriver}">
+                    <a th:href="${postRideUrl}" class="button">Post a New Ride</a>
+                    <a th:href="${myRidesUrl}" class="button button-secondary">My Posted Rides</a>
+                </div>
+            </div>
+
+            <p class="security-note">
+                If you do not recognize this activity, please change your password immediately and contact our support team.
+            </p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Dynamic Ride Sharing. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
