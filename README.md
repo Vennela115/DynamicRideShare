@@ -319,7 +319,7 @@ Many-to-Many → Passengers can book multiple rides
 
 Clone the Repository
 
-git clone https://github.com/Pradeep0997/RideShare.git
+git clone https://github.com/Vennela115/DynamicRideShare.git
 cd RideShare
 
 
@@ -347,10 +347,10 @@ http://localhost:3000
 👨‍💻 **Contributors**
 
 
-Settipalle Pradeep Reddy 
+Chitra Vennela
 
 
-@Pradeep0997
+@Vennela115
 
 
 ---
